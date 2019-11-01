@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">СЕКУНДОМЕР</string>
+    <string name="init_time">0:00:00</string>>
+    <string name="button_start">СТАРТ</string>>
+    <string name="button_pause">СТОП</string>>\
+    <string name="button_reset">ОЧИСТИТЬ</string>>
+
+</resources>
