@@ -16,7 +16,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="414dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:contentDescription="@string/text_view_content_description"
         app:srcCompat="@drawable/cofee6" />
@@ -45,16 +45,6 @@
         android:hint="@string/text_edit_name" />
 
     <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="@string/edit_text_email"
-        android:importantForAutofill="no"
-        android:inputType="textWebEmailAddress" />
-
-    <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:importantForAutofill="no"
@@ -66,13 +56,12 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/buttonOrder"
+        android:id="@+id/buttonLogin"
         android:background="@color/white"
         android:textColor="@color/darkBrown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:onClick="onClickRegistration"
-
-        android:text="@string/button_enter" />
+        android:text="@string/button_login" />
 </LinearLayout>
