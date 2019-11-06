@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PostRequestExemple</string>
+    <string name="text_view_password">TextView</string>
+    <string name="text_view_email">TextView</string>
+    <string name="text_view_user_name">User Name</string>
+    <string name="buttonLogin">Login</string>
+
+</resources>

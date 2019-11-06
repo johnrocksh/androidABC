@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightBrown"
+
+    >
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="414dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/text_view_content_description"
+        app:srcCompat="@drawable/cofee6" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_hello" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:importantForAutofill="no"
+
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:hint="@string/text_edit_name" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="@string/edit_text_email"
+        android:importantForAutofill="no"
+        android:inputType="textWebEmailAddress" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:importantForAutofill="no"
+        android:layout_height="wrap_content"
+        android:ems="10"
+
+        android:textColor="@color/white"
+        android:hint="@string/edit_text_password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/buttonOrder"
+        android:background="@color/white"
+        android:textColor="@color/darkBrown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:onClick="onClickRegistration"
+
+        android:text="@string/button_enter" />
+</LinearLayout>
