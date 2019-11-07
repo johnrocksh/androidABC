@@ -7,5 +7,9 @@
     <string name="edit_text_password">Введите пароль</string>
     <string name="edit_text_email">Введите email</string>
     <string name="button_registration">Зарегистрироваться</string>
+    <string name="ui_name">Имя</string>
+    <string name="ui_age">Возраст</string>
+    <string name="ui_email">email</string>
+    <string name="ui_occupation">Деятельность</string>
 
 </resources>

@@ -3,6 +3,8 @@ package com.example.cafeorder;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -37,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private String authUrl = "http://start.webpower.cf/test/auth/";
 
     static private HashMap<String, String> postDataParams;
+    static private AlertDialog.Builder responseAlert;
     TextView textViewName;
     TextView textViewPassword;
-    static private AlertDialog.Builder responseAlert;
-
+    private static Context mContext;//to calling intent from doIn Background
+    static boolean isResponseSuccess;
     LoginAndRegistration loginAndRegistration = null;
 
 
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         textViewPassword = findViewById(R.id.editTextPassword);
         loginAndRegistration = new LoginAndRegistration();
         responseAlert = new AlertDialog.Builder(this);
+        mContext = this;
     }
 
     public void onClickRegistration(View view) {
@@ -60,9 +64,13 @@ public class MainActivity extends AppCompatActivity {
         postDataParams.put("nickname", "john");
         postDataParams.put("password", "salvation777");
 
-        loginAndRegistration.execute(authUrl);
+        loginAndRegistration.execute(authUrl).toString();
 
+        if (isResponseSuccess) {
 
+            Intent intent = new Intent(this, UserInformation.class);
+            startActivity(intent);
+        }
     }
 
     static public class LoginAndRegistration extends AsyncTask<String, Void, String> {
@@ -137,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.i("MyResult", s);
+            String message = "success";
 
             try {
 
@@ -145,11 +154,13 @@ public class MainActivity extends AppCompatActivity {
                 String success = jsonObject.getString("success");
 
                 if (error.equals("")) {
-                    String message = "success";
-                    showAllertLoginSuccess(message);
+
+                    isResponseSuccess = true;
+                    Intent login = new Intent(mContext, UserInformation.class);
+                    mContext.startActivity(login);
+
                 } else if (success.equals("")) {
-                    String message = "error";
-                    showAllertLoginSuccess(message);
+                    isResponseSuccess = false;
 
                 }
 
