@@ -154,7 +154,7 @@ public class UserInformation extends AppCompatActivity {
         TextView tvAge = new TextView(mContext);
         tvAge = new TextView(mContext);
         tvAge.setBackgroundColor(0xff12dd12);
-        tvAge.setText(Age);
+        tvAge.setText(String.valueOf(Age));
 
         /* create cell element - textview */
         TextView tvEmail = new TextView(mContext);

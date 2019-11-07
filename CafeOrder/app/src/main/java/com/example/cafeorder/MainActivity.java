@@ -37,13 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
     private String registerUrl = "http://start.webpower.cf/test/register/";
     private String authUrl = "http://start.webpower.cf/test/auth/";
-
+    private static Context mContext;//to calling intent from doIn Background
     static private HashMap<String, String> postDataParams;
     static private AlertDialog.Builder responseAlert;
+    static boolean isResponseSuccess;
     TextView textViewName;
     TextView textViewPassword;
-    private static Context mContext;//to calling intent from doIn Background
-    static boolean isResponseSuccess;
+    static  CharSequence errorLogin;
+    static int duration;
     LoginAndRegistration loginAndRegistration = null;
 
 
@@ -51,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Context context = getApplicationContext();
+        errorLogin = "";
+        duration = Toast.LENGTH_SHORT;
+
+
         textViewName = findViewById(R.id.editTextName);
         textViewPassword = findViewById(R.id.editTextPassword);
         loginAndRegistration = new LoginAndRegistration();
@@ -64,12 +71,18 @@ public class MainActivity extends AppCompatActivity {
         postDataParams.put("nickname", "john");
         postDataParams.put("password", "salvation777");
 
+       /*destruct an construct now*/
+        if(loginAndRegistration!=null){
+
+            loginAndRegistration=null;
+            loginAndRegistration = new LoginAndRegistration();
+
+        }
         loginAndRegistration.execute(authUrl).toString();
 
         if (isResponseSuccess) {
 
-            Intent intent = new Intent(this, UserInformation.class);
-            startActivity(intent);
+
         }
     }
 
@@ -155,11 +168,16 @@ public class MainActivity extends AppCompatActivity {
 
                 if (error.equals("")) {
 
+                    Toast toast = Toast.makeText(mContext, success, duration);
+                    toast.show();
+
                     isResponseSuccess = true;
                     Intent login = new Intent(mContext, UserInformation.class);
                     mContext.startActivity(login);
 
                 } else if (success.equals("")) {
+                    Toast toast = Toast.makeText(mContext, error, duration);
+                    toast.show();
                     isResponseSuccess = false;
 
                 }
@@ -194,23 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    static public void showAllertLoginSuccess(String events) {
-
-
-        if (events.equals("error")) {
-            responseAlert.setMessage("Неверные данные\n" +
-                    "авторизации\n")
-                    .create();
-            responseAlert.show();
-
-
-        } else if (events.equals("success")) {
-            responseAlert.setMessage("Вы успешно авторизовались\n")
-                    .create();
-            responseAlert.show();
-
-        }
-
-    }
 }
+
+
 
