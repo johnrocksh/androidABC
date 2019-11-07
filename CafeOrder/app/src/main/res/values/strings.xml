@@ -11,5 +11,10 @@
     <string name="ui_age">Возраст</string>
     <string name="ui_email">email</string>
     <string name="ui_occupation">Деятельность</string>
+    <string name="text_view_reg_name">Введите имя</string>
+    <string name="text_view_reg_email">Введите e-mail</string>
+    <string name="text_view_reg_passw">Введите пароль</string>
+    <string name="text_view_reg_confirm_passw">Подтвердите пароль</string>
+    <string name="button_reg_submit">Регистрация</string>
 
 </resources>

@@ -120,7 +120,6 @@ public class UserInformation extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
         }
 
     }
