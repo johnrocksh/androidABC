@@ -71,7 +71,13 @@
 
     <Button
         android:id="@+id/buttonSubmit"
+        android:background="@color/white"
+        android:textColor="@color/darkBrown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_reg_submit" />
+        android:textSize="24sp"
+        android:onClick="onClickSubmit"
+        android:text="@string/button_reg_submit"
+
+        />
 </LinearLayout>

@@ -37,7 +37,6 @@
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:importantForAutofill="no"
-
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
@@ -50,7 +49,6 @@
         android:importantForAutofill="no"
         android:layout_height="wrap_content"
         android:ems="10"
-
         android:textColor="@color/white"
         android:hint="@string/edit_text_password"
         android:inputType="textPassword" />
@@ -62,13 +60,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:onClick="onClickRegistration"
-        android:text="@string/button_login" />
+        android:onClick="onClickLogin"
+        android:text="@string/button_login"
+        />
 
     <Button
         android:id="@+id/buttonRegistration1"
         android:background="@color/white"
+        android:textColor="@color/darkBrown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_registration" />
+        android:layout_marginTop="12dp"
+        android:textSize="12sp"
+        android:onClick="onClickRegistration"
+        android:text="@string/button_registration"
+
+        />
 </LinearLayout>

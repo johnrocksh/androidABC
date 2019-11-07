@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     static boolean isResponseSuccess;
     TextView textViewName;
     TextView textViewPassword;
-    static  CharSequence errorLogin;
+    static CharSequence errorLogin;
     static int duration;
     LoginAndRegistration loginAndRegistration = null;
 
@@ -53,11 +53,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Context context = getApplicationContext();
         errorLogin = "";
         duration = Toast.LENGTH_SHORT;
-
-
         textViewName = findViewById(R.id.editTextName);
         textViewPassword = findViewById(R.id.editTextPassword);
         loginAndRegistration = new LoginAndRegistration();
@@ -66,24 +63,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickRegistration(View view) {
+      Intent intentReg=new Intent(this,Registration.class);
+     startActivity(intentReg);
+    }
 
+    public void onClickLogin(View view) {
         postDataParams = new HashMap<String, String>();
         postDataParams.put("nickname", "john");
         postDataParams.put("password", "salvation777");
 
-       /*destruct an construct now*/
-        if(loginAndRegistration!=null){
+        /*destruct an construct now*/
+        if (loginAndRegistration != null) {
 
-            loginAndRegistration=null;
+            loginAndRegistration = null;
             loginAndRegistration = new LoginAndRegistration();
 
         }
-        loginAndRegistration.execute(authUrl).toString();
-
-        if (isResponseSuccess) {
-
-
+        try {
+            loginAndRegistration.execute(authUrl).toString();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
+
     }
 
     static public class LoginAndRegistration extends AsyncTask<String, Void, String> {
