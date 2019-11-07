@@ -6,5 +6,6 @@
     <string name="text_view_content_description">Картинка Кофе</string>
     <string name="edit_text_password">Введите пароль</string>
     <string name="edit_text_email">Введите email</string>
+    <string name="button_registration">Зарегистрироваться</string>
 
 </resources>

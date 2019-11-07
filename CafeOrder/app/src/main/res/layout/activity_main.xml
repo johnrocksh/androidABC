@@ -64,4 +64,11 @@
         android:textSize="24sp"
         android:onClick="onClickRegistration"
         android:text="@string/button_login" />
+
+    <Button
+        android:id="@+id/buttonRegistration1"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_registration" />
 </LinearLayout>

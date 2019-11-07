@@ -1,5 +1,6 @@
 package com.example.cafeorder;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
@@ -9,6 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,11 +34,12 @@ import javax.net.ssl.HttpsURLConnection;
 public class MainActivity extends AppCompatActivity {
 
     private String registerUrl = "http://start.webpower.cf/test/register/";
-    private String authUrl=      "http://start.webpower.cf/test/auth/";
+    private String authUrl = "http://start.webpower.cf/test/auth/";
 
     static private HashMap<String, String> postDataParams;
     TextView textViewName;
     TextView textViewPassword;
+    static private AlertDialog.Builder responseAlert;
 
     LoginAndRegistration loginAndRegistration = null;
 
@@ -43,19 +48,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         textViewName = findViewById(R.id.editTextName);
         textViewPassword = findViewById(R.id.editTextPassword);
-
         loginAndRegistration = new LoginAndRegistration();
-
-
+        responseAlert = new AlertDialog.Builder(this);
     }
 
     public void onClickRegistration(View view) {
 
-        postDataParams=new HashMap<String,String>();
+        postDataParams = new HashMap<String, String>();
         postDataParams.put("nickname", "john");
         postDataParams.put("password", "salvation777");
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
- static    public class LoginAndRegistration extends AsyncTask<String, Void, String> {
+    static public class LoginAndRegistration extends AsyncTask<String, Void, String> {
 
 
         @Override
@@ -132,6 +133,34 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Log.i("MyResult", s);
+
+            try {
+
+                JSONObject jsonObject = new JSONObject(s);
+                String error = jsonObject.getString("error");
+                String success = jsonObject.getString("success");
+
+                if (error.equals("")) {
+                    String message = "success";
+                    showAllertLoginSuccess(message);
+                } else if (success.equals("")) {
+                    String message = "error";
+                    showAllertLoginSuccess(message);
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+
         private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
 
             StringBuilder result = new StringBuilder();
@@ -153,4 +182,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    static public void showAllertLoginSuccess(String events) {
+
+
+        if (events.equals("error")) {
+            responseAlert.setMessage("Неверные данные\n" +
+                    "авторизации\n")
+                    .create();
+            responseAlert.show();
+
+
+        } else if (events.equals("success")) {
+            responseAlert.setMessage("Вы успешно авторизовались\n")
+                    .create();
+            responseAlert.show();
+
+        }
+
+    }
 }
+
