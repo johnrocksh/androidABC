@@ -38,14 +38,16 @@ import javax.net.ssl.HttpsURLConnection;
 public class MainActivity extends AppCompatActivity {
 
     private String authUrl = "http://start.webpower.cf/test/auth/";
+
     private static Context mContext;//to calling intent from doIn Background
     static private HashMap<String, String> postDataParams;
     static private AlertDialog.Builder responseAlert;
     static boolean isResponseSuccess;
-    TextView textViewName;
-    TextView textViewPassword;
     static CharSequence errorLogin;
     static int duration;
+
+    TextView textViewName;
+    TextView textViewPassword;
     LoginToServer loginToServer = null;
 
 
@@ -61,6 +63,35 @@ public class MainActivity extends AppCompatActivity {
         loginToServer = new LoginToServer();
         responseAlert = new AlertDialog.Builder(this);
         mContext = this;
+    }
+
+    public void onClickLogin(View view) {
+
+        /*check internet connection*/
+        if (!getInternetConnectionInfo()) {
+
+            Toast toast = Toast.makeText(this, "Нет подключения к интернету!", duration);
+            toast.show();
+            return;
+        }
+        postDataParams = new HashMap<String, String>();
+        postDataParams.put("nickname", textViewName.toString());
+        postDataParams.put("password", textViewPassword.toString());
+
+
+        /*destruct  loginAndRegistration an construct now*/
+        if (loginToServer != null) {
+
+            loginToServer = null;
+            loginToServer = new LoginToServer();
+
+        }
+        try {
+            loginToServer.execute(authUrl).toString();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void onClickRegistration(View view) {
@@ -94,34 +125,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void onClickLogin(View view) {
-
-        /*check internet connection*/
-        if (!getInternetConnectionInfo()) {
-
-            Toast toast = Toast.makeText(this, "Нет подключения к интернету!", duration);
-            toast.show();
-            return;
-        }
-        postDataParams = new HashMap<String, String>();
-        postDataParams.put("nickname", textViewName.toString());
-        postDataParams.put("password", textViewPassword.toString());
-
-
-        /*destruct  loginAndRegistration an construct now*/
-        if (loginToServer != null) {
-
-            loginToServer = null;
-            loginToServer = new LoginToServer();
-
-        }
-        try {
-            loginToServer.execute(authUrl).toString();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     static public class LoginToServer extends AsyncTask<String, Void, String> {
 
@@ -218,7 +221,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
         private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
 
             StringBuilder result = new StringBuilder();
@@ -237,7 +239,6 @@ public class MainActivity extends AppCompatActivity {
             }
             return result.toString();
         }
-
 
     }
 
