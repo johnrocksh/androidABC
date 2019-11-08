@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -35,7 +37,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String registerUrl = "http://start.webpower.cf/test/register/";
     private String authUrl = "http://start.webpower.cf/test/auth/";
     private static Context mContext;//to calling intent from doIn Background
     static private HashMap<String, String> postDataParams;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewPassword;
     static CharSequence errorLogin;
     static int duration;
-    LoginAndRegistration loginAndRegistration = null;
+    LoginToServer loginToServer = null;
 
 
     @Override
@@ -57,51 +58,86 @@ public class MainActivity extends AppCompatActivity {
         duration = Toast.LENGTH_SHORT;
         textViewName = findViewById(R.id.editTextName);
         textViewPassword = findViewById(R.id.editTextPassword);
-        loginAndRegistration = new LoginAndRegistration();
+        loginToServer = new LoginToServer();
         responseAlert = new AlertDialog.Builder(this);
         mContext = this;
     }
 
     public void onClickRegistration(View view) {
-      Intent intentReg=new Intent(this,Registration.class);
-     startActivity(intentReg);
+        Intent intentReg = new Intent(this, Registration.class);
+        startActivity(intentReg);
     }
 
+    boolean getInternetConnectionInfo() {
+
+        boolean isInternetConnection = false;
+
+        // Getting our connectivity manager.
+        ConnectivityManager mgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        // Getting our active network information.
+        NetworkInfo netInfo = mgr.getActiveNetworkInfo();
+        // We have a network connection, but not necessarily a data connection.
+
+        if (netInfo != null) {
+            if (netInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+
+            } else if (netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                // We're on WiFi data
+
+            }
+            if (netInfo.isConnected()) {
+                isInternetConnection = true;
+                // We have a valid data connection
+            }
+        }
+        return isInternetConnection;
+    }
+
+
     public void onClickLogin(View view) {
+
+        /*check internet connection*/
+        if (!getInternetConnectionInfo()) {
+
+            Toast toast = Toast.makeText(this, "Нет подключения к интернету!", duration);
+            toast.show();
+            return;
+        }
         postDataParams = new HashMap<String, String>();
-        postDataParams.put("nickname", "john");
-        postDataParams.put("password", "salvation777");
+        postDataParams.put("nickname", textViewName.toString());
+        postDataParams.put("password", textViewPassword.toString());
 
-        /*destruct an construct now*/
-        if (loginAndRegistration != null) {
 
-            loginAndRegistration = null;
-            loginAndRegistration = new LoginAndRegistration();
+        /*destruct  loginAndRegistration an construct now*/
+        if (loginToServer != null) {
+
+            loginToServer = null;
+            loginToServer = new LoginToServer();
 
         }
         try {
-            loginAndRegistration.execute(authUrl).toString();
+            loginToServer.execute(authUrl).toString();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
 
     }
 
-    static public class LoginAndRegistration extends AsyncTask<String, Void, String> {
+    static public class LoginToServer extends AsyncTask<String, Void, String> {
 
 
         @Override
         protected String doInBackground(String... strings) {
 
             URL url = null;
-            HttpURLConnection urlConnection = null;
+            HttpURLConnection conn = null;
             String response = "";
 
 
             try {
 
                 url = new URL(strings[0]);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000);
                 conn.setConnectTimeout(15000);
                 conn.setRequestMethod("POST");
@@ -120,16 +156,11 @@ public class MainActivity extends AppCompatActivity {
                 int responseCode = conn.getResponseCode();
 
                 if (responseCode == HttpsURLConnection.HTTP_OK) {
-
                     String line;
-
                     BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
                     while ((line = br.readLine()) != null) {
-
-
                         response += line;
-
                     }
                 } else {
 
@@ -144,13 +175,11 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             } finally {
 
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
+                if (conn != null) {
+                    conn.disconnect();
                 }
 
             }
-
-
             return null;
 
         }
@@ -159,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.i("MyResult", s);
-            String message = "success";
 
             try {
 
