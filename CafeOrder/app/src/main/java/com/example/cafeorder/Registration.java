@@ -43,8 +43,7 @@ public class Registration extends AppCompatActivity {
     TextView textViewName;
     TextView textViewEmail;
     TextView textViewPassword;
-    TextView textViewPassConf;
-    ServerRegistrationTask serverRegistrationTask;
+   ServerRegistrationTask serverRegistrationTask;
     static boolean isResponseSuccess;
 
     @Override
@@ -55,8 +54,7 @@ public class Registration extends AppCompatActivity {
         textViewName = findViewById(R.id.editTextName);
         textViewEmail = findViewById(R.id.editTextEmail);
         textViewPassword = findViewById(R.id.editTextPassword);
-        textViewPassConf = findViewById(R.id.editTextConfirmPassword);
-        mContext = this;
+       mContext = this;
         serverRegistrationTask = new ServerRegistrationTask();
 
     }
