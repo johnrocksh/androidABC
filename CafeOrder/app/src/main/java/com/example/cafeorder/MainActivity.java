@@ -59,11 +59,15 @@ public class MainActivity extends AppCompatActivity {
         errorLogin = "";
         duration = Toast.LENGTH_SHORT;
         textViewName = findViewById(R.id.editTextName);
+        textViewName.setText("");
         textViewPassword = findViewById(R.id.editTextPassword);
+        textViewPassword.setText("");
         loginToServer = new LoginToServer();
         responseAlert = new AlertDialog.Builder(this);
         mContext = this;
     }
+
+
 
     public void onClickLogin(View view) {
 
@@ -74,11 +78,17 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
             return;
         }
+
         postDataParams = new HashMap<String, String>();
         postDataParams.put("nickname", textViewName.toString());
         postDataParams.put("password", textViewPassword.toString());
+        String name =textViewName.getText().toString();
+        if(name.equals("")){
 
-
+            Toast toast = Toast.makeText(this, "Пожалуйста заполните все поля", duration);
+            toast.show();
+         return;
+        }
         /*destruct  loginAndRegistration an construct now*/
         if (loginToServer != null) {
 

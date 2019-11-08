@@ -28,6 +28,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -51,13 +52,74 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         duration = Toast.LENGTH_SHORT;
-        textViewName=findViewById(R.id.editTextName);
-        textViewEmail=findViewById(R.id.editTextEmail);
-        textViewPassword=findViewById(R.id.editTextPassword);
-        textViewPassConf=findViewById(R.id.editTextConfirmPassword);
+        textViewName = findViewById(R.id.editTextName);
+        textViewEmail = findViewById(R.id.editTextEmail);
+        textViewPassword = findViewById(R.id.editTextPassword);
+        textViewPassConf = findViewById(R.id.editTextConfirmPassword);
         mContext = this;
-        serverRegistrationTask=new ServerRegistrationTask();
+        serverRegistrationTask = new ServerRegistrationTask();
 
+    }
+
+    void showMewssage(String message) {
+
+        Toast toast = Toast.makeText(this, message, duration);
+        toast.show();
+
+    }
+
+    boolean passwordValidation(String password) {
+
+        boolean isUppercase = false;
+        boolean isDigit = false;
+        /*length validation*/
+        if (password.length() < 7) {
+
+            showMewssage(" Неверный пароль!  Введите не меньше 7 символов!");
+            return false;
+        }
+
+        /*is there are upper case character in password*/
+        for (int i = 0; i < password.length(); i++) {
+
+            char ch = password.charAt(i);
+            if (Character.isUpperCase(ch)) {
+                isUppercase = true;
+            }
+        }
+        if (!isUppercase) {
+
+            showMewssage("Пароль должен содержать заглавные буквы");
+            return false;
+        }
+
+        /*password has numbers validation*/
+        for (int i = 0; i < password.length(); i++) {
+
+            if (Character.isDigit(password.charAt(i))) {
+
+                isDigit = true;
+            }
+        }
+        if (!isDigit) {
+
+            showMewssage("Пароль должен содержать хотябы одну цифру");
+            return false;
+        }
+    return true;
+
+    }
+    public static boolean emailValidation(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 
     boolean getInternetConnectionInfo() {
@@ -96,16 +158,27 @@ public class Registration extends AppCompatActivity {
             return;
         }
 
+        /*password validation*/
+        boolean validPass= passwordValidation(textViewPassword.getText().toString());
+        if(!validPass) return;
+
+        /*name validation*/
+        if(textViewName.getText().toString().length()==0){
+            showMewssage("Введите имя!");
+            return;
+        }
+
+        /*email validation*/
+        if (!emailValidation(textViewEmail.getText().toString())){
+
+            showMewssage("Не верный формат e-mail адреса");
+            return;
+        }
         postDataParams = new HashMap<String, String>();
-//        postDataParams.put("nickname", textViewName.toString());
-//        postDataParams.put("password", textViewPassword.toString());
-//        postDataParams.put("email", textViewEmail.toString());
 
-          postDataParams.put("nickname", "JohnRock");
-          postDataParams.put("password", "777");
+          postDataParams.put("nickname", textViewName.getText().toString());
+          postDataParams.put("password", textViewPassword.getText().toString());
           postDataParams.put("email", "johnrock@mail.ru");
-
-        /*destruct  loginAndRegistration an construct now*/
 
             /*destruct  loginAndRegistration an construct now*/
             if (serverRegistrationTask != null) {

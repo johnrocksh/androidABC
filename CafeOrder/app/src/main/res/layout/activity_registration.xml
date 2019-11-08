@@ -55,20 +55,6 @@
 
         />
 
-    <EditText
-        android:id="@+id/editTextConfirmPassword"
-        android:hint="@string/text_view_reg_confirm_passw"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:importantForAutofill="no"
-
-        />
-
     <Button
         android:id="@+id/buttonSubmit"
         android:background="@color/white"
