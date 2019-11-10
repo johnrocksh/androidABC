@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sport</string>
+    <string name="app_name">Спорт треккер</string>
     <string name="text_view_hello">Добро</string>
     <string name="text_view_hello2">Пожаловать</string>
     <string name="text_edit_name">Введите Имя</string>
@@ -18,5 +18,10 @@
     <string name="text_view_reg_passw">Введите пароль</string>
     <string name="text_view_reg_confirm_passw">Подтвердите пароль</string>
     <string name="button_reg_submit">Регистрация</string>
+    <string name="text_view_name">Имя</string>
+    <string name="text_view_activity">Проффесия</string>
+    <string name="text_view_age">Возраст</string>
+    <string name="text_view_email">e-mail</string>
+    <string name="text_view_user_information">ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ</string>
 
 </resources>

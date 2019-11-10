@@ -1,63 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
- >
-
-    <TableLayout
-        android:id="@+id/TableLayoutUserInfo"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/text_view_content_description"
+        android:scaleType="fitXY"
+        android:src="@drawable/main_background_runner"
+        />
 
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ui_name"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:gravity="center"
-                />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ui_occupation"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:gravity="center"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00F2D29B"
+        android:orientation="vertical"
+        >
 
-                />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/text_view_user_information"
+            android:textSize="18sp" />
 
-            <TextView
+        <TextView
+            android:id="@+id/textViewNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/text_view_name"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/ui_age"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ui_email"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:gravity="center"
-
-                />
+            android:background="#0D7C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
+            android:textColor="#022B53"
 
 
 
-        </TableRow>
 
-    </TableLayout>
 
-</LinearLayout>
+            />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="386dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="4dp"
+            android:background="#3B7C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
+            android:inputType="textEmailSubject"
+            android:textAlignment="center"
+            android:textColor="#022B53"
+
+            android:textSize="24sp" />
+
+
+        <TextView
+            android:id="@+id/textViewActivityLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view_activity"
+            android:background="#0D7C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
+            android:textColor="#022B53"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewActivity"
+            android:layout_width="386dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="4dp"
+            android:background="#397C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
+            android:inputType="textEmailSubject"
+            android:textAlignment="center"
+            android:textColor="#022B53"
+            android:textSize="24sp" />
+
+
+
+        <TextView
+            android:id="@+id/textViewAgeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view_age"
+            android:background="#0D7C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
+            android:textColor="#022B53"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewAge"
+            android:layout_width="386dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="4dp"
+            android:background="#3B7C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
+            android:inputType="textEmailSubject"
+            android:textAlignment="center"
+            android:textColor="#022B53"
+
+            android:textSize="24sp" />
+
+
+
+
+        <TextView
+            android:id="@+id/textViewEmailLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view_email"
+            android:background="#0D7C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
+            android:textColor="#022B53"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="386dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="4dp"
+            android:background="#527C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
+            android:inputType="textEmailSubject"
+            android:textAlignment="center"
+            android:textColor="#022B53"
+            android:textSize="24sp" />
+
+
+        <Button
+            android:id="@+id/buttonOk"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:onClick="OnClickOk"
+            android:background="#0A0A0A"
+            android:text="Ок"
+            android:textColor="@color/white" />
+
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -2,6 +2,7 @@ package com.example.cafeorder;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -38,27 +40,42 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class UserInformation extends AppCompatActivity {
 
- static   TableLayout tableLayout;
+    static TableLayout tableLayout;
+
+
     private static Context mContext;//to calling intent from doIn Background
 
+    static TextView textViewName;
+    static TextView textViewActivity;
+    static TextView textViewAge;
+    static TextView textViewEmail;
+
     GetUserInformationTask getUserInformationTask = new GetUserInformationTask();
-    private String userDataUrl="http://start.webpower.cf/test/data/";
-   static public String name = "";
+    private String userDataUrl = "http://start.webpower.cf/test/data/";
+    static public String name = "";
     static public String email = "";
     static public String activity = "";
-    static public int age=0;
+    static public int age = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_information);
-        tableLayout = findViewById(R.id.TableLayoutUserInfo);
-        mContext=this;
+        textViewName = findViewById(R.id.textViewName);
+        textViewActivity = findViewById(R.id.textViewActivity);
+        textViewAge = findViewById(R.id.textViewAge);
+        textViewEmail = findViewById(R.id.textViewEmail);
 
+        mContext = this;
 
         getUserInformationTask.execute(userDataUrl);
 
+    }
+
+    public void OnClickOk(View view) {
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
     static public class GetUserInformationTask extends AsyncTask<String, Void, String> {
@@ -109,12 +126,12 @@ public class UserInformation extends AppCompatActivity {
 
             try {
 
-                JSONObject json=new JSONObject(s);
-                name=json.getString("name");
-                activity= json.getString("activity");
-                age=json.getInt("age");
-                email=json.getString("e-mail");
-                drawTableLayout(name,activity,age,email);
+                JSONObject json = new JSONObject(s);
+                name = json.getString("name");
+                activity = json.getString("activity");
+                age = json.getInt("age");
+                email = json.getString("e-mail");
+                showUserInformation(name, activity, age, email);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -126,70 +143,13 @@ public class UserInformation extends AppCompatActivity {
 
 
     //creation of table with user Data
- static    private void drawTableLayout(String Name, String Job, int Age, String email) {
+    static private void showUserInformation(String Name, String Acctivity, int Age, String email) {
 
-        LinearLayout.LayoutParams tableRowParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+        textViewName.setText(Name);
+        textViewActivity.setText(Acctivity);
+        textViewAge.setText(String.valueOf(Age));
+        textViewEmail.setText(email);
 
-        /* create a table row */
-        TableRow tableRow = new TableRow(mContext);
-        tableRow.setLayoutParams(tableRowParams);
-
-
-        /* create cell element - textview */
-        TextView tvName = new TextView(mContext);
-        tvName.setBackgroundColor(0xff12dd12);
-        tvName.setText(Name);
-
-        /* create cell element - textview */
-        TextView tvJob = new TextView(mContext);
-        tvJob = new TextView(mContext);
-        tvJob.setBackgroundColor(0xff12dd12);
-        tvJob.setText(Job);
-
-
-        /* create cell element - textview */
-        TextView tvAge = new TextView(mContext);
-        tvAge = new TextView(mContext);
-        tvAge.setBackgroundColor(0xff12dd12);
-        tvAge.setText(String.valueOf(Age));
-
-        /* create cell element - textview */
-        TextView tvEmail = new TextView(mContext);
-        tvEmail.setBackgroundColor(0xff12dd12);
-        tvEmail.setText(email);
-
-
-
-        /* set params for cell elements */
-        TableRow.LayoutParams cellParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT);
-        tvName.setLayoutParams(cellParams);
-        tvEmail.setLayoutParams(cellParams);
-        tvAge.setLayoutParams(cellParams);
-        tvJob.setLayoutParams(cellParams);
-        //cellParams.
-        cellParams.weight = 1;
-        tvName.setGravity(Gravity.CENTER);
-        tvName.setTypeface(Typeface.DEFAULT_BOLD);
-
-        tvEmail.setGravity(Gravity.CENTER);
-        tvEmail.setTypeface(Typeface.DEFAULT_BOLD);
-
-        tvAge.setGravity(Gravity.CENTER);
-        tvAge.setTypeface(Typeface.DEFAULT_BOLD);
-
-        tvJob.setGravity(Gravity.CENTER);
-        tvJob.setTypeface(Typeface.DEFAULT_BOLD);
-
-        tableLayout.addView(tableRow);
-
-
-        /* add views to the row */
-        tableRow.addView(tvName);
-        tableRow.addView(tvEmail);
-        tableRow.addView(tvAge);
-        tableRow.addView(tvJob);
 
     }
 

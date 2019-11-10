@@ -8,11 +8,13 @@
     android:orientation="vertical" >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/text_view_content_description"
-        android:src="@drawable/main_background_runner" />
+        android:scaleType="fitXY"
+        android:src="@drawable/main_background_runner"
+        />
 
 
     <LinearLayout
@@ -30,14 +32,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="200dp"
             android:background="#0D7C2424"
+            android:fontFamily="serif"
             android:hint="@string/text_view_reg_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textColorHint="@color/text_view_hint_color"
+            android:textColor="#022B53"
 
-            android:fontFamily="cursive"
+            android:textColorHint="@color/text_view_hint_color"
 
             />
 
@@ -46,17 +48,17 @@
             android:layout_width="386dp"
             android:layout_height="52dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="4dp"
             android:layout_marginTop="25dp"
+            android:layout_marginBottom="4dp"
             android:background="#0D7C2424"
-            android:textColorHint="@color/text_view_hint_color"
+            android:fontFamily="serif"
             android:hint="@string/text_view_reg_email"
             android:importantForAutofill="no"
             android:inputType="textEmailSubject"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="#022B53"
 
-            android:fontFamily="cursive"
+            android:textColorHint="@color/text_view_hint_color"
 
             />
 
@@ -65,17 +67,17 @@
             android:layout_width="386dp"
             android:layout_height="52dp"
             android:layout_gravity="center_horizontal"
-            android:background="#0D7C2424"
-            android:textColorHint="@color/text_view_hint_color"
-            android:layout_marginBottom="4dp"
             android:layout_marginTop="25dp"
+            android:layout_marginBottom="4dp"
+            android:background="#0D7C2424"
+            android:fontFamily="serif"
             android:hint="@string/text_view_reg_passw"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="#022B53"
 
-            android:fontFamily="cursive"
+            android:textColorHint="@color/text_view_hint_color"
 
 
             />
@@ -92,7 +94,7 @@
             android:text="@string/button_reg_submit"
             android:textColor="#FCFBFA"
 
-            android:textSize="24sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
 </FrameLayout>
