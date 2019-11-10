@@ -7,7 +7,8 @@
     <string name="text_view_content_description">Картинка Кофе</string>
     <string name="edit_text_password">Введите пароль</string>
     <string name="edit_text_email">Введите email</string>
-    <string name="button_registration">Нет аккаунта? Зарегестрируйтесь.</string>
+    <string name="button_no_account">Нет аккаунта?</string>
+    <string name="button_registration">Зарегестрируйтесь</string>
     <string name="ui_name">Имя</string>
     <string name="ui_age">Возраст</string>
     <string name="ui_email">email</string>

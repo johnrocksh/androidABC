@@ -33,7 +33,7 @@
             android:textAlignment="center"
             android:textColor="#224466"
             android:textSize="52sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/textView_pojalovatio"
@@ -46,7 +46,7 @@
             android:textColor="#224466"
             android:textSize="52sp"
 
-            android:textStyle="bold" />
+            />
 
         <EditText
             android:id="@+id/editTextName"
@@ -57,11 +57,16 @@
             android:background="#0D7C2424"
             android:ems="10"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+
             android:fontFamily="casual"
             android:hint="@string/text_edit_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/text_view_hint_color"/>
+
+
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -70,20 +75,22 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:background="#0D7C2424"
             android:ems="10"
             android:fontFamily="casual"
             android:hint="@string/edit_text_password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/text_view_hint_color"/>
 
         <Button
             android:id="@+id/layout"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="95dp"
+            android:layout_marginTop="55dp"
             android:background="#090808"
             android:fontFamily="casual"
             android:onClick="onClickLogin"
@@ -91,18 +98,29 @@
             android:textColor="#FCFBFB"
             android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/buttonRegistration1"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_no_account"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
             android:fontFamily="casual"
-            android:onClick="onClickRegistration"
-            android:text="@string/button_registration"
-            android:textColor="@color/darkBrown"
+            android:text="@string/button_no_account"
+            android:textColor="#FCFBFB"
+            android:textSize="14sp" />
 
-            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/textView_registration"
+            android:layout_width="184dp"
+            android:fontFamily="casual"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/button_registration"
+            android:textColor="#FCFBFB"
+            android:textSize="24sp"
+            android:linksClickable="true"
+            android:onClick="onClickRegistration"
+            />
 
 
     </LinearLayout>

@@ -7,4 +7,5 @@
     <color name="white">#ffffff</color>
     <color name="lightBrown">#f2d29b</color>
     <color name="darkBrown">#95681a</color>
+    <color name="text_view_hint_color">#022b53</color>
 </resources>
