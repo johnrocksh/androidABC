@@ -107,6 +107,8 @@ public class Registration extends AppCompatActivity {
     return true;
 
     }
+
+
     public static boolean emailValidation(String email)
     {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
@@ -156,22 +158,27 @@ public class Registration extends AppCompatActivity {
             return;
         }
 
-        /*password validation*/
-        boolean validPass= passwordValidation(textViewPassword.getText().toString());
-        if(!validPass) return;
-
         /*name validation*/
         if(textViewName.getText().toString().length()==0){
             showMewssage("Введите имя!");
             return;
         }
 
-        /*email validation*/
+
+
+
+
         if (!emailValidation(textViewEmail.getText().toString())){
 
             showMewssage("Не верный формат e-mail адреса");
             return;
         }
+        /*password validation*/
+        boolean validPass= passwordValidation(textViewPassword.getText().toString());
+        if(!validPass) return;
+
+
+
         postDataParams = new HashMap<String, String>();
 
           postDataParams.put("nickname", textViewName.getText().toString());

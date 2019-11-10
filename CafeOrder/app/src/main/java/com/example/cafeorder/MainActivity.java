@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static Context mContext;//to calling intent from doIn Background
     static private HashMap<String, String> postDataParams;
-    static private AlertDialog.Builder responseAlert;
+   // static private AlertDialog.Builder responseAlert;
     static boolean isResponseSuccess;
     static CharSequence errorLogin;
     static int duration;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Remove title bar
 
         errorLogin = "";
         duration = Toast.LENGTH_SHORT;
@@ -63,10 +65,9 @@ public class MainActivity extends AppCompatActivity {
         textViewPassword = findViewById(R.id.editTextPassword);
         textViewPassword.setText("");
         loginToServer = new LoginToServer();
-        responseAlert = new AlertDialog.Builder(this);
+      //  responseAlert = new AlertDialog.Builder(this);
         mContext = this;
     }
-
 
 
     public void onClickLogin(View view) {
@@ -82,12 +83,12 @@ public class MainActivity extends AppCompatActivity {
         postDataParams = new HashMap<String, String>();
         postDataParams.put("nickname", textViewName.toString());
         postDataParams.put("password", textViewPassword.toString());
-        String name =textViewName.getText().toString();
-        if(name.equals("")){
+        String name = textViewName.getText().toString();
+        if (name.equals("")) {
 
             Toast toast = Toast.makeText(this, "Пожалуйста заполните все поля", duration);
             toast.show();
-         return;
+            return;
         }
         /*destruct  loginAndRegistration an construct now*/
         if (loginToServer != null) {
@@ -133,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return isInternetConnection;
     }
-
 
 
     static public class LoginToServer extends AsyncTask<String, Void, String> {

@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Cafe Order</string>
-    <string name="text_view_hello">Добро Пожаловать</string>
+    <string name="app_name">Sport</string>
+    <string name="text_view_hello">Добро</string>
+    <string name="text_view_hello2">Пожаловать</string>
     <string name="text_edit_name">Введите Имя</string>
     <string name="button_login">Войти</string>
     <string name="text_view_content_description">Картинка Кофе</string>
