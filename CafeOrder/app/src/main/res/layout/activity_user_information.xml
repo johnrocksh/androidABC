@@ -32,122 +32,130 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:fontFamily="serif"
-            android:textAlignment="center"
             android:text="@string/text_view_user_information"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/textViewNameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="#0D7C2424"
-            android:fontFamily="serif"
-            android:importantForAutofill="no"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="@string/text_view_name"
+            android:background="#0D7C2424"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
             android:textColor="#022B53"
-            android:textSize="18sp" />
+
+            />
 
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="386dp"
             android:layout_height="42dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="#97FCF9F9"
+            android:background="#80F8F6F6"
             android:fontFamily="serif"
             android:importantForAutofill="no"
-           android:textColor="#022B53"
-           android:textSize="20sp" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAlignment="center"
+            android:textColor="#022B53"
+            android:textSize="18sp"
+
+            />
 
 
         <TextView
             android:id="@+id/textViewActivityLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/text_view_activity"
             android:background="#0D7C2424"
             android:fontFamily="serif"
+            android:layout_marginTop="15dp"
             android:importantForAutofill="no"
-            android:layout_marginTop="25dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/text_view_activity"
             android:textColor="#022B53"
-            android:textSize="18sp" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
 
         <TextView
             android:id="@+id/textViewActivity"
             android:layout_width="386dp"
             android:layout_height="42dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:layout_gravity="center_horizontal"
-            android:background="#96FAF7F7"
+            android:background="#6DFAF9F9"
             android:fontFamily="serif"
             android:importantForAutofill="no"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:textColor="#022B53"
-            android:textSize="20sp" />
+            />
+
 
 
         <TextView
             android:id="@+id/textViewAgeLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#0D7C2424"
-            android:fontFamily="serif"
-            android:layout_marginTop="25dp"
-            android:importantForAutofill="no"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:text="@string/text_view_age"
+            android:background="#0D7C2424"
+            android:layout_marginTop="15dp"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
             android:textColor="#022B53"
-            android:textSize="18sp" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
 
         <TextView
             android:id="@+id/textViewAge"
             android:layout_width="386dp"
             android:layout_height="42dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:layout_gravity="center_horizontal"
-            android:background="#96FAF7F7"
+            android:background="#80FAF7F7"
             android:fontFamily="serif"
             android:importantForAutofill="no"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:textColor="#022B53"
-            android:textSize="20sp" />
+
+            />
+
+
 
 
         <TextView
             android:id="@+id/textViewEmailLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#0D7C2424"
-            android:fontFamily="serif"
-            android:layout_marginTop="25dp"
-            android:importantForAutofill="no"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:text="@string/text_view_email"
+            android:background="#0D7C2424"
+            android:layout_marginTop="15dp"
+            android:fontFamily="serif"
+            android:importantForAutofill="no"
             android:textColor="#022B53"
-            android:textSize="18sp" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
 
         <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="386dp"
             android:layout_height="42dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
             android:layout_gravity="center_horizontal"
-            android:background="#96FAF7F7"
+             android:background="#79FDFAFA"
             android:fontFamily="serif"
             android:importantForAutofill="no"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:textColor="#022B53"
-            android:textSize="20sp" />
-
+            />
 
         <Button
             android:id="@+id/buttonOk"
@@ -159,6 +167,9 @@
             android:background="#0A0A0A"
             android:text="@string/button_text_ok"
             android:textColor="@color/white" />
+
+
+
 
     </LinearLayout>
 
