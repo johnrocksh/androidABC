@@ -41,10 +41,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class UserInformation extends AppCompatActivity {
 
     static TableLayout tableLayout;
-
-
     private static Context mContext;//to calling intent from doIn Background
-
     static TextView textViewName;
     static TextView textViewActivity;
     static TextView textViewAge;
@@ -66,15 +63,13 @@ public class UserInformation extends AppCompatActivity {
         textViewActivity = findViewById(R.id.textViewActivity);
         textViewAge = findViewById(R.id.textViewAge);
         textViewEmail = findViewById(R.id.textViewEmail);
-
         mContext = this;
-
         getUserInformationTask.execute(userDataUrl);
 
     }
 
     public void OnClickOk(View view) {
-        Intent intent=new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
@@ -123,7 +118,6 @@ public class UserInformation extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-
             try {
 
                 JSONObject json = new JSONObject(s);
@@ -132,7 +126,6 @@ public class UserInformation extends AppCompatActivity {
                 age = json.getInt("age");
                 email = json.getString("e-mail");
                 showUserInformation(name, activity, age, email);
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -150,9 +143,7 @@ public class UserInformation extends AppCompatActivity {
         textViewAge.setText(String.valueOf(Age));
         textViewEmail.setText(email);
 
-
     }
-
 
 }
 

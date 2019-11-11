@@ -43,8 +43,7 @@ public class Registration extends AppCompatActivity {
     TextView textViewName;
     TextView textViewEmail;
     TextView textViewPassword;
-   ServerRegistrationTask serverRegistrationTask;
-    static boolean isResponseSuccess;
+    ServerRegistrationTask serverRegistrationTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,7 @@ public class Registration extends AppCompatActivity {
         textViewName = findViewById(R.id.editTextName);
         textViewEmail = findViewById(R.id.editTextEmail);
         textViewPassword = findViewById(R.id.editTextPassword);
-       mContext = this;
+        mContext = this;
         serverRegistrationTask = new ServerRegistrationTask();
 
     }
@@ -72,7 +71,6 @@ public class Registration extends AppCompatActivity {
         boolean isDigit = false;
         /*length validation*/
         if (password.length() < 7) {
-
             showMewssage(" Неверный пароль!  Введите не меньше 7 символов!");
             return false;
         }
@@ -104,14 +102,13 @@ public class Registration extends AppCompatActivity {
             showMewssage("Пароль должен содержать хотябы одну цифру");
             return false;
         }
-    return true;
+        return true;
 
     }
 
 
-    public static boolean emailValidation(String email)
-    {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+    public static boolean emailValidation(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                 "A-Z]{2,7}$";
@@ -159,38 +156,33 @@ public class Registration extends AppCompatActivity {
         }
 
         /*name validation*/
-        if(textViewName.getText().toString().length()==0){
+        if (textViewName.getText().toString().length() == 0) {
             showMewssage("Введите имя!");
             return;
         }
 
-
-
-
-
-        if (!emailValidation(textViewEmail.getText().toString())){
+        if (!emailValidation(textViewEmail.getText().toString())) {
 
             showMewssage("Не верный формат e-mail адреса");
             return;
         }
         /*password validation*/
-        boolean validPass= passwordValidation(textViewPassword.getText().toString());
-        if(!validPass) return;
-
+        boolean validPass = passwordValidation(textViewPassword.getText().toString());
+        if (!validPass) return;
 
 
         postDataParams = new HashMap<String, String>();
 
-          postDataParams.put("nickname", textViewName.getText().toString());
-          postDataParams.put("password", textViewPassword.getText().toString());
-          postDataParams.put("email", "johnrock@mail.ru");
+        postDataParams.put("nickname", textViewName.getText().toString());
+        postDataParams.put("password", textViewPassword.getText().toString());
+        postDataParams.put("email", "johnrock@mail.ru");
 
-            /*destruct  loginAndRegistration an construct now*/
-            if (serverRegistrationTask != null) {
+        /*destruct  loginAndRegistration an construct now*/
+        if (serverRegistrationTask != null) {
 
-                serverRegistrationTask = null;
-                serverRegistrationTask = new ServerRegistrationTask();
-            }
+            serverRegistrationTask = null;
+            serverRegistrationTask = new ServerRegistrationTask();
+        }
 
         try {
             serverRegistrationTask.execute(registrationUrl.toString());
@@ -252,20 +244,13 @@ public class Registration extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String s){
+        protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.i("MyResult", s);
 
             try {
-
-
-
-                    Toast toast = Toast.makeText(mContext,s, duration);
-                    toast.show();
-
-
-
-
+                Toast toast = Toast.makeText(mContext, s, duration);
+                toast.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }

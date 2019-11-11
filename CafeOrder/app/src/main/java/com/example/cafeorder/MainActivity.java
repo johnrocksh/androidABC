@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static Context mContext;//to calling intent from doIn Background
     static private HashMap<String, String> postDataParams;
-   // static private AlertDialog.Builder responseAlert;
     static boolean isResponseSuccess;
     static CharSequence errorLogin;
     static int duration;
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Remove title bar
 
         errorLogin = "";
         duration = Toast.LENGTH_SHORT;
@@ -65,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         textViewPassword = findViewById(R.id.editTextPassword);
         textViewPassword.setText("");
         loginToServer = new LoginToServer();
-      //  responseAlert = new AlertDialog.Builder(this);
         mContext = this;
     }
 
@@ -159,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
 
                 OutputStream os = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-
                 writer.write(getPostDataString(postDataParams));
 
                 writer.flush();
@@ -167,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
                 os.close();
 
                 int responseCode = conn.getResponseCode();
-
                 if (responseCode == HttpsURLConnection.HTTP_OK) {
                     String line;
                     BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -212,7 +207,6 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast toast = Toast.makeText(mContext, success, duration);
                     toast.show();
-
                     isResponseSuccess = true;
                     Intent login = new Intent(mContext, UserInformation.class);
                     mContext.startActivity(login);
@@ -221,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(mContext, error, duration);
                     toast.show();
                     isResponseSuccess = false;
-
                 }
 
             } catch (JSONException e) {
