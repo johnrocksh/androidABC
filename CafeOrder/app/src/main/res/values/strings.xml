@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">Спорт треккер</string>
+    <string name="app_name">Тестовое задание</string>
     <string name="text_view_hello">Добро</string>
     <string name="text_view_hello2">Пожаловать</string>
     <string name="text_edit_name">Введите Имя</string>
     <string name="button_login">Войти</string>
-    <string name="text_view_content_description">Картинка Кофе</string>
+    <string name="text_view_content_description">Картинка спортсменки</string>
     <string name="edit_text_password">Введите пароль</string>
     <string name="edit_text_email">Введите email</string>
     <string name="button_no_account">Нет аккаунта?</string>
-    <string name="button_registration">Зарегестрируйтесь</string>
+    <string name="button_registration">Регестрируйтесь</string>
     <string name="ui_name">Имя</string>
     <string name="ui_age">Возраст</string>
-    <string name="ui_email">email</string>
+    <string name="ui_email">e-mail</string>
     <string name="ui_occupation">Деятельность</string>
     <string name="text_view_reg_name">Введите имя</string>
     <string name="text_view_reg_email">Введите e-mail</string>
