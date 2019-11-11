@@ -29,8 +29,10 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:fontFamily="serif"
+            android:textAlignment="center"
             android:text="@string/text_view_user_information"
             android:textSize="18sp" />
 
@@ -39,124 +41,112 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/text_view_name"
-
             android:background="#0D7C2424"
             android:fontFamily="serif"
             android:importantForAutofill="no"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/text_view_name"
             android:textColor="#022B53"
-
-
-
-
-
-            />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="386dp"
-            android:layout_height="52dp"
+            android:layout_height="42dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="4dp"
-            android:background="#3B7C2424"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="#97FCF9F9"
             android:fontFamily="serif"
             android:importantForAutofill="no"
-            android:inputType="textEmailSubject"
-            android:textAlignment="center"
-            android:textColor="#022B53"
-
-            android:textSize="24sp" />
+           android:textColor="#022B53"
+           android:textSize="20sp" />
 
 
         <TextView
             android:id="@+id/textViewActivityLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text_view_activity"
             android:background="#0D7C2424"
             android:fontFamily="serif"
             android:importantForAutofill="no"
-            android:textColor="#022B53"
+            android:layout_marginTop="25dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:text="@string/text_view_activity"
+            android:textColor="#022B53"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewActivity"
             android:layout_width="386dp"
-            android:layout_height="52dp"
+            android:layout_height="42dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="4dp"
-            android:background="#397C2424"
+            android:background="#96FAF7F7"
             android:fontFamily="serif"
             android:importantForAutofill="no"
-            android:inputType="textEmailSubject"
-            android:textAlignment="center"
             android:textColor="#022B53"
-            android:textSize="24sp" />
-
+            android:textSize="20sp" />
 
 
         <TextView
             android:id="@+id/textViewAgeLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text_view_age"
             android:background="#0D7C2424"
             android:fontFamily="serif"
+            android:layout_marginTop="25dp"
             android:importantForAutofill="no"
-            android:textColor="#022B53"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:text="@string/text_view_age"
+            android:textColor="#022B53"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewAge"
             android:layout_width="386dp"
-            android:layout_height="52dp"
+            android:layout_height="42dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="4dp"
-            android:background="#3B7C2424"
+            android:background="#96FAF7F7"
             android:fontFamily="serif"
             android:importantForAutofill="no"
-            android:inputType="textEmailSubject"
-            android:textAlignment="center"
             android:textColor="#022B53"
-
-            android:textSize="24sp" />
-
-
+            android:textSize="20sp" />
 
 
         <TextView
             android:id="@+id/textViewEmailLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text_view_email"
             android:background="#0D7C2424"
             android:fontFamily="serif"
+            android:layout_marginTop="25dp"
             android:importantForAutofill="no"
-            android:textColor="#022B53"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:text="@string/text_view_email"
+            android:textColor="#022B53"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="386dp"
-            android:layout_height="52dp"
+            android:layout_height="42dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="4dp"
-            android:background="#527C2424"
+            android:background="#96FAF7F7"
             android:fontFamily="serif"
             android:importantForAutofill="no"
-            android:inputType="textEmailSubject"
-            android:textAlignment="center"
             android:textColor="#022B53"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
 
         <Button
@@ -167,11 +157,8 @@
             android:layout_marginTop="25dp"
             android:onClick="OnClickOk"
             android:background="#0A0A0A"
-            android:text="Ок"
+            android:text="@string/button_text_ok"
             android:textColor="@color/white" />
-
-
-
 
     </LinearLayout>
 
