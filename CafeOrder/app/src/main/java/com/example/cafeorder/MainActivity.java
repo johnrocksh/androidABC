@@ -1,4 +1,4 @@
-package com.example.cafeorder;
+﻿package com.example.cafeorder;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +38,11 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String authUrl = "http://start.webpower.cf/test/auth/";
+   // private String authUrl = "http://start.webpower.cf/test/auth/";
+   //private String authUrl = "http://docto.webpower.cf/API/loginController";
+
+   //главный URL
+   private String authUrl = "http://docto.webpower.cf/API/";
 
     private static Context mContext;//to calling intent from doIn Background
     static private HashMap<String, String> postDataParams;
@@ -77,10 +81,19 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+
+//        postDataParams.put("nickname", textViewName.toString());
+//        postDataParams.put("password", textViewPassword.toString());
+      
+        //здесь я создаю запрос!!!
         postDataParams = new HashMap<String, String>();
-        postDataParams.put("nickname", textViewName.toString());
-        postDataParams.put("password", textViewPassword.toString());
-        String name = textViewName.getText().toString();
+        postDataParams.put("task", "loginController");
+        postDataParams.put("email", "Icosmo12@mail.ru");
+        postDataParams.put("password", "123456");
+        postDataParams.put("rememberMe", "0");
+
+
+       String name = textViewName.getText().toString();
         if (name.equals("")) {
 
             Toast toast = Toast.makeText(this, "Пожалуйста заполните все поля", duration);
@@ -163,15 +176,18 @@ public class MainActivity extends AppCompatActivity {
                 os.close();
 
                 int responseCode = conn.getResponseCode();
-                if (responseCode == HttpsURLConnection.HTTP_OK) {
-                    String line;
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+                    String line="";
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                   
+                    //по строкам считываю ответ
                     while ((line = br.readLine()) != null) {
                         response += line;
                     }
                 } else {
-
+                    response+=Integer.toString(responseCode);
+//
                     response = "";
                 }
                 Log.i("response", response);
